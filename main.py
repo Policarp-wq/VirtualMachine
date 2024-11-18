@@ -18,6 +18,8 @@ class Logger:
             f.write(f'  <{tag}>{msg}</{tag}>\n')
 
     def log_bytes(self, tag, bytes):
+        if self.log_file is None:
+            return
         with open(self.log_file, 'a') as f:
             f.write(f'  <{tag}>\n')
             for byte in bytes:

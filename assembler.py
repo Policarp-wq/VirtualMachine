@@ -52,7 +52,7 @@ class Assembler:
         res[:7] = int2ba(a, length=7)[::-1]
         res[7:37] = int2ba(const, length=30)[::-1]
         bytes = self.get_hex(res)
-        logger.log_bytes('LOAD_CONST', bytes)
+        self.logger.log_bytes('LOAD_CONST', bytes)
         return bitarray(res)
 
     # A[0-6]=81, B[7-16]=address 3byte
@@ -64,7 +64,7 @@ class Assembler:
         res[0:7] = int2ba(a, length=7)[::-1]
         res[7:17] = int2ba(address, length=10)[::-1]
         bytes = self.get_hex(res)
-        logger.log_bytes('READ', bytes)
+        self.logger.log_bytes('READ', bytes)
         return bitarray(res)
 
     # A[0-6]=53, B[7-21]=shift  3byte
@@ -76,7 +76,7 @@ class Assembler:
         res[0:7] = int2ba(a, length=7)[::-1]
         res[7:22] = int2ba(shift, length=14)[::-1]
         bytes = self.get_hex(res)
-        logger.log_bytes('WRITE', bytes)
+        self.logger.log_bytes('WRITE', bytes)
         return bitarray(res)
 
     # A[0-6]=101, B[7-21]=shift, C[22-31]=address 4byte
@@ -90,7 +90,7 @@ class Assembler:
         res[7:22] = int2ba(shift, length=14)[::-1]
         res[22:32] = int2ba(address, length=10)[::-1]
         bytes = self.get_hex(res)
-        logger.log_bytes('SGN', bytes)
+        self.logger.log_bytes('SGN', bytes)
         return bitarray(res)
 
 
